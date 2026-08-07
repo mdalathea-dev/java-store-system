@@ -40,7 +40,7 @@ public class Loja {
                 cont = 1;
             } 
 
-            if (cont == 1) {
+            if (cont == 0) {
                 System.out.printf("Produto \"%s\" não encontrado\n", nomeProduto);
             }
         }

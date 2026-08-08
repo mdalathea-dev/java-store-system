@@ -27,3 +27,5 @@ Este projeto faz parte da minha jornada de estudos em Java e será evoluído con
 * Listagem de produtos.
 * Busca de produtos por nome.
 * Cálculo do valor total da loja.
+* Remoção de produto.
+* Identificação do produto mais caro e mais barato.

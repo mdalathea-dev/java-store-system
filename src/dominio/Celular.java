@@ -24,7 +24,7 @@ public class Celular extends Produto {
         }
         
         if (this.armazenamento != 0) {
-            saida += "\nArmazenamento: " + this.armazenamento;
+            saida += "\nArmazenamento: " + this.armazenamento + "GB";
         }
         
         return saida;

@@ -3,7 +3,7 @@ package dominio;
 public class Headset extends Produto {
     private static final String TIPO = "HEADSET";
     private String tipoConexao;
-    private boolean temMicrofone;
+    private Boolean temMicrofone;
 
     public Headset(String nome, double valor) {
         super(nome, valor);
@@ -18,10 +18,10 @@ public class Headset extends Produto {
             saida += "\nTipo de conexão: " + this.tipoConexao;
         }
 
-        if (this.temMicrofone) {
+        if (this.temMicrofone != null) {
             saida += "\nPossui microfone: ";
 
-            if (this.temMicrofone == true) {
+            if (this.temMicrofone) {
                 saida += "Sim";
             } else {
                 saida += "Não";

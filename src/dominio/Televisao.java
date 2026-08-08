@@ -4,7 +4,7 @@ public class Televisao extends Produto{
     private static final String TIPO = "TELEVISÃO";
     private int tamanhoPolegadas;
     private String resolucao;
-    private boolean smartTv;
+    private Boolean smartTv;
 
     public Televisao(String nome, double valor) {
         super(nome, valor);
@@ -16,17 +16,17 @@ public class Televisao extends Produto{
         saida += super.toString();
 
         if (this.tamanhoPolegadas != 0) {
-            saida += "Tamanho: " + this.tamanhoPolegadas + "\"";
+            saida += "\nTamanho: " + this.tamanhoPolegadas + "\"";
         }
 
         if (this.resolucao != null) {
             saida += "\nResolução: " + this.resolucao;
         }
 
-        if (this.smartTv) {
+        if (this.smartTv != null) {
             saida += "\nÉ uma SmarTv: ";
 
-            if (this.smartTv == true) {
+            if (this.smartTv) {
                 saida += "Sim";
             } else {
                 saida += "Não";

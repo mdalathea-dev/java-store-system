@@ -15,14 +15,14 @@ public abstract class Produto implements Taxavel{
 
     @Override
     public String toString() {
-        String saida = "Nome: " + this.nome + "\nPreço: " + this.valor;
+        String saida = "Nome: " + this.nome + "\nPreço: R$" + this.valor;
 
         if (this.marca != null) {
             saida += "\nMarca: " + this.marca;
         }
 
         if (this.imposto != 0) {
-            saida += "\nImposto: " + this.imposto;
+            saida += "\nImposto: R$" + this.imposto;
         }
 
         return saida;

@@ -6,19 +6,34 @@ import dominio.Computador;
 import dominio.Headset;
 import dominio.Mouse;
 import dominio.Televisao;
+import service.Linha;
 import service.Loja;
 
 public class StoreTest {
     public static void main(String[] args) {
-        Produto celular = new Celular("Sansung Galaxy A55", 1900);
-        Computador computador = new Computador("Lenovo IdeaPad 1", 2700);
-        Headset headset = new Headset("HyperX Cloud Stinger II", 250);
-        Mouse mouse = new Mouse("Logitech G203 Lightsync", 140);
-        Televisao televisao = new Televisao("Smart TV 55", 2400);
+        Celular celular = new Celular("Samsung Galaxy A55", 1900);
+        celular.setMarca("Samsung");
+        celular.setArmazenamento(256);
+        celular.setMemoriaRam(8);
 
-        celular.setMarca("Sansung");
+        Computador computador = new Computador("Lenovo IdeaPad 1", 2700);
         computador.setMarca("Lenovo");
+        computador.setProcessador("Intel Core i5");
+        computador.setMemoriaRam(16);
+        computador.setArmazenamento(512);
+
+        Headset headset = new Headset("HyperX Cloud Stinger II", 250);
+        headset.setMarca("HyperX");
+        headset.setTemMicrofone(true);
+
+        Mouse mouse = new Mouse("Logitech G502", 350);
         mouse.setMarca("Logitech");
+        mouse.setDpi(25600);
+
+        Televisao televisao = new Televisao("Smart TV LG OLED", 4500);
+        televisao.setMarca("LG");
+        televisao.setTamanhoPolegadas(55);
+        televisao.setSmartTv(true);
 
         Loja loja = new Loja(new Produto[]{celular, computador, headset, mouse, televisao});
 
@@ -31,8 +46,27 @@ public class StoreTest {
         loja.imprimeProdutos();
 
         System.out.println("Valor total dos produtos: R$" + loja.valorTotal());
-        Loja.linhaGrossa();
+        Linha.linhaGrossa();
 
-        loja.buscarPorNome("Smart TV 55");
+        loja.buscarPorNome("Samsung Galaxy A55");
+        loja.buscarPorNome("Nitro 5");
+
+        System.out.println("Produto mais caro:");
+        System.out.println(loja.produtoMaisCaro());
+        Linha.linhaGrossa();
+
+        System.out.println("Produto mais barato:");
+        System.out.println(loja.produtoMaisBarato());
+        Linha.linhaGrossa();
+
+        // erro em RemoverPorNome devido a limitação do uso de array em vez de collections, arrumarei futuramente
+
+        loja.RemoverPorNome("Samsung Galaxy A55");
+        
+        loja.imprimeProdutos();
+
+        System.out.println("Produto mais barato:");
+        System.out.println(loja.produtoMaisBarato());
+        Linha.linhaGrossa();
     }
 }

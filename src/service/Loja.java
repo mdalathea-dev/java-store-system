@@ -5,38 +5,20 @@ import dominio.Produto;
 public class Loja {
     private Produto[] cadastrados;
 
-    public static void linhaFina() {
-        System.out.println("-------------------------");
-    }
-
-    public static void linhaGrossa() {
-        System.out.println("=========================");
-    }
-
     public Loja(Produto[] cadastrados) {
         this.cadastrados = cadastrados;
     }
 
-    public double valorTotal() {
-        double soma = 0;
-        
-        for (Produto produto : this.cadastrados) {
-            soma += produto.getValor();
-        }
-        
-        return soma;
-    }
-
     public void imprimeProdutos() {
         System.out.println("PRODUTOS CADASTRADOS");
-        Loja.linhaGrossa();
+        Linha.linhaGrossa();
         
         for (int i=0; i < this.cadastrados.length; i++) {
             System.out.println(this.cadastrados[i]);
             if (cadastrados.length - i != 1) {
-                linhaFina();
+                Linha.linhaFina();
             } else {
-                linhaGrossa();
+                Linha.linhaGrossa();
             }
         }
     }
@@ -45,7 +27,7 @@ public class Loja {
         int cont = 0;
         
         for (Produto produto : this.cadastrados) {
-            if (produto.getNome().equals(nomeProduto)) {
+            if (produto.getNome().equalsIgnoreCase(nomeProduto)) {
                 System.out.println("Produto encontrado:");
                 System.out.println(produto);
                 cont = 1;
@@ -56,7 +38,57 @@ public class Loja {
             System.out.printf("Produto \"%s\" não encontrado\n", nomeProduto);
         }
 
-        linhaGrossa();
+        Linha.linhaGrossa();
+    }
+
+    public void RemoverPorNome(String nomeProduto) {
+        int cont = 0;
+        
+        for (int i=0; i < cadastrados.length; i++) {
+            if (cadastrados[i].getNome().equalsIgnoreCase(nomeProduto)) {
+                cadastrados[i] = null;
+                System.out.println("Produto removido com sucesso");
+                cont = 1;
+            }
+        }
+
+        if (cont == 0) {
+            System.out.printf("Produto \"%s\" nunca esteve cadastrado\n", nomeProduto);
+        }
+
+        Linha.linhaGrossa();
+    }
+
+    public Produto produtoMaisCaro() {
+        Produto maisCaro = cadastrados[0];
+        for (int i=0; i < cadastrados.length; i++) {
+            if (maisCaro.getValor() < cadastrados[i].getValor()) {
+                    maisCaro = cadastrados[i];
+                }
+            }
+        
+            return maisCaro;
+        }
+
+    public Produto produtoMaisBarato() {
+        Produto maisBarato = cadastrados[0];
+        for (int i=0; i < cadastrados.length; i++) {
+            if (maisBarato.getValor() > cadastrados[i].getValor()) {
+                    maisBarato = cadastrados[i];
+                }
+            }
+        
+            return maisBarato;
+        }
+
+    public double valorTotal() {
+        double soma = 0;
+        
+        for (Produto produto : this.cadastrados) {
+            soma += produto.getValor();
+        }
+        
+        return soma;
     }
 
     public Produto[] getCadastrados() {

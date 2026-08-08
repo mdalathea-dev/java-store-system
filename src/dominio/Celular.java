@@ -1,9 +1,33 @@
 package dominio;
 
-public class Celular extends Produto{
+public class Celular extends Produto {
+    private static final String TIPO = "CELULAR";
+    private String processador;
+    private int memoriaRam;
+    private int armazenamento;
 
     public Celular(String nome, double valor) {
         super(nome, valor);
+    }
+
+    @Override
+    public String toString() {
+        String saida = Celular.TIPO + "\n";
+        saida += super.toString();
+
+        if (this.processador != null) {
+            saida += "\nProcessador: " + this.processador;
+        }
+        
+        if (this.memoriaRam != 0) {
+            saida += "\nMemória Ram: " + this.memoriaRam + "GB";
+        }
+        
+        if (this.armazenamento != 0) {
+            saida += "\nArmazenamento: " + this.armazenamento;
+        }
+        
+        return saida;
     }
 
     @Override
@@ -11,4 +35,31 @@ public class Celular extends Produto{
         return getValor() * 0.15;
     }
 
+    public static String getTipo() {
+        return TIPO;
+    }
+
+    public String getProcessador() {
+        return processador;
+    }
+
+    public void setProcessador(String processador) {
+        this.processador = processador;
+    }
+
+    public int getMemoriaRam() {
+        return memoriaRam;
+    }
+
+    public void setMemoriaRam(int memoriaRam) {
+        this.memoriaRam = memoriaRam;
+    }
+
+    public int getArmazenamento() {
+        return armazenamento;
+    }
+
+    public void setArmazenamento(int armazenamento) {
+        this.armazenamento = armazenamento;
+    }
 }

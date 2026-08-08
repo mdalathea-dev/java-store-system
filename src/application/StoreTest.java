@@ -25,13 +25,13 @@ public class StoreTest {
         System.out.println("Calculando imposto sobre os Produtos...");
         System.out.println();
         for (Produto produto : loja.getCadastrados()) {
-            double imposto = produto.imposto();
-            produto.setValor(produto.getValor() + imposto);
+            produto.setImposto(produto.imposto());
         }
 
         loja.imprimeProdutos();
 
-        loja.valorTotal();
+        System.out.println("Valor total dos produtos: R$" + loja.valorTotal());
+        Loja.linhaGrossa();
 
         loja.buscarPorNome("Smart TV 55");
     }

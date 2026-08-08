@@ -6,6 +6,7 @@ public abstract class Produto implements Taxavel{
     private String nome;
     private double valor;
     private String marca;
+    private double imposto;
     
     public Produto(String nome, double valor) {
         this.nome = nome;
@@ -18,6 +19,10 @@ public abstract class Produto implements Taxavel{
 
         if (this.marca != null) {
             saida += "\nMarca: " + this.marca;
+        }
+
+        if (this.imposto != 0) {
+            saida += "\nImposto: " + this.imposto;
         }
 
         return saida;
@@ -45,5 +50,13 @@ public abstract class Produto implements Taxavel{
 
     public void setMarca(String marca) {
         this.marca = marca;
+    }
+
+    public double getImposto() {
+        return imposto;
+    }
+
+    public void setImposto(double valorImposto) {
+        this.imposto = valorImposto;
     }
 }
